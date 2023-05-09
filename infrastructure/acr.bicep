@@ -65,3 +65,46 @@ module aca2 'br:tjsfdpo01.azurecr.io/bicep/modules/containerapp:0.0.1' = {
 		 containerAppName: 'ca-fdpo-02'
 	}
 }
+
+// This is another portion to break out
+// AKS DNS TEST
+resource aksRG 'Microsoft.Resources/resourceGroups@2022-09-01' = {
+	name: 'rg-aks-dns-test'
+	location: location
+}
+
+
+module aksVnet 'br:tjsfdpo01.azurecr.io/bicep/modules/vnet:0.0.1' = {
+	scope: aksRG
+	name: 'aksvnet'
+	params: {
+		virtualNetworkName: 'vnet-aks-dns-t'
+		addressPrefix: '10.1.0.0/16'
+		subnets: [
+		  {
+				name: 'snet-aks'
+				nsg_id: ''
+				subnetPrefix: '10.1.0.0/24'
+				PEpol: true
+				PLSpol: true
+				natgw_id: ''
+			}	
+		]
+	}
+}
+
+
+module aks 'br:tjsfdpo01.azurecr.io/bicep/modules/aks:0.0.2' = {
+	scope: aksRG
+	name: 'aks-sample' 
+	params: {
+		acrName: acr.name
+		dnsPrefix: 'aks-dns-t'
+		dnsServiceIP: ''
+		dockerBridgeCidr: ''
+		networkPlugin: 'azure' 
+		resourceName: 'aks-dns-t'
+		serviceCidr: '172.0.0.0/24'
+		vnetSubnetID: aksVnet.outputs.subnets[0].id
+	}
+}
