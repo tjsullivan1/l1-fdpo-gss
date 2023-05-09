@@ -105,6 +105,6 @@ module aks 'br:tjsfdpo01.azurecr.io/bicep/modules/aks:0.0.2' = {
 		networkPlugin: 'azure' 
 		resourceName: 'aks-dns-t'
 		serviceCidr: '172.0.0.0/24'
-		vnetSubnetID: aksVnet.outputs.subnets[0].id
+		vnetSubnetID: aksVnet.outputs.subnets[0].subnet_id
 	}
 }
