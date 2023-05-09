@@ -42,3 +42,26 @@ module acr 'br:tjsfdpo01.azurecr.io/bicep/modules/acr:0.0.1' = {
 	}
 }
 
+// This is a section that should be broken out, but will tempaorarily be a holder for me to use the existing SPs
+resource mtWFunctionRG 'Microsoft.Resources/resourceGroups@2021-01-01' = {
+  name: 'rg-multitenant-function-sample'
+  location: location
+}
+
+module aca1 'br:tjsfdpo01.azurecr.io/bicep/modules/containerapp:0.0.1' = {
+	name: 'aca1'
+	scope: mtWFunctionRG
+	params: {
+		 containerAppEnvName: 'came-fdpo-01'
+		 containerAppName: 'ca-fdpo-01'
+	}
+}
+
+module aca2 'br:tjsfdpo01.azurecr.io/bicep/modules/containerapp:0.0.1' = {
+	name: 'aca2'
+	scope: mtWFunctionRG
+	params: {
+		 containerAppEnvName: 'came-fdpo-02'
+		 containerAppName: 'ca-fdpo-02'
+	}
+}
