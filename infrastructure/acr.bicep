@@ -30,7 +30,7 @@ resource acrRG 'Microsoft.Resources/resourceGroups@2021-01-01' = {
   location: location
 }
 
-/* module acr 'br:tjsiacdemoacr.azurecr.io/bicep/modules/acr:1.1.0' = {
+module acr 'br:tjsfdpo01.azurecr.io/bicep/modules/acr:0.0.1' = {
   name: 'acrDeployment'
 	scope: acrRG
 	params: {
@@ -41,4 +41,4 @@ resource acrRG 'Microsoft.Resources/resourceGroups@2021-01-01' = {
 		submitted_tags: tags
 	}
 }
-*/
+
