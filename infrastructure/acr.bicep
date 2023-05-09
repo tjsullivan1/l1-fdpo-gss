@@ -74,7 +74,7 @@ resource aksRG 'Microsoft.Resources/resourceGroups@2022-09-01' = {
 }
 
 
-module aksVnet 'br:tjsfdpo01.azurecr.io/bicep/modules/vnet:0.0.1' = {
+module aksVnet 'br:tjsfdpo01.azurecr.io/bicep/modules/vnet:0.0.2' = {
 	scope: aksRG
 	name: 'aksvnet'
 	params: {
@@ -85,8 +85,8 @@ module aksVnet 'br:tjsfdpo01.azurecr.io/bicep/modules/vnet:0.0.1' = {
 				name: 'snet-aks'
 				nsg_id: ''
 				subnetPrefix: '10.1.0.0/24'
-				PEpol: true
-				PLSpol: true
+				PEpol: 'Enabled'
+				PLSpol: 'Enabled'
 				natgw_id: ''
 			}	
 		]
