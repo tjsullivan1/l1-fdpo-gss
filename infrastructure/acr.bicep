@@ -94,7 +94,7 @@ module aksVnet 'br:tjsfdpo01.azurecr.io/bicep/modules/vnet:0.0.2' = {
 }
 
 
-module aks 'br:tjsfdpo01.azurecr.io/bicep/modules/aks:0.0.2' = {
+module aks 'br:tjsfdpo01.azurecr.io/bicep/modules/aks:0.0.3' = {
 	scope: aksRG
 	name: 'aks-sample' 
 	params: {
