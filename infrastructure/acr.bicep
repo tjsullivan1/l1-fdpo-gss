@@ -48,10 +48,17 @@ resource mtWFunctionRG 'Microsoft.Resources/resourceGroups@2021-01-01' = {
   location: location
 }
 
-module aca1 'br:tjsfdpo01.azurecr.io/bicep/modules/containerapp:0.0.1' = {
+module aca_uai 'aca-work.bicep' = {
+	scope: mtWFunctionRG
+	name: 'aca-uai'
+}
+
+module aca1 'br:tjsfdpo01.azurecr.io/bicep/modules/containerapp:0.0.2' = {
 	name: 'aca1'
 	scope: mtWFunctionRG
 	params: {
+		 acr_loginserver: acr.outputs.acrLoginServer
+		 uai_id: aca_uai.outputs.uai_id
 		 containerAppEnvName: 'came-fdpo-01'
 		 containerAppName: 'ca-fdpo-01'
 		 containerImage: 'tjsfdpo01.azurecr.io/tjs-hello:latest'
