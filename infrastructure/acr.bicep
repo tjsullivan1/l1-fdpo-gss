@@ -49,8 +49,11 @@ resource mtWFunctionRG 'Microsoft.Resources/resourceGroups@2021-01-01' = {
 }
 
 module aca_uai 'aca-work.bicep' = {
-	scope: mtWFunctionRG
 	name: 'aca-uai'
+	scope: mtWFunctionRG
+	params: {
+		location: location
+	}
 }
 
 module aca1 'br:tjsfdpo01.azurecr.io/bicep/modules/containerapp:0.0.2' = {
