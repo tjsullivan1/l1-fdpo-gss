@@ -100,7 +100,7 @@ module aks 'br:tjsfdpo01.azurecr.io/bicep/modules/aks:0.0.4' = {
 	params: {
 		acrName: acr.name
 		dnsPrefix: 'aks-dns-t'
-		dnsServiceIP: ''
+		dnsServiceIP: '172.0.0.0/26'
 		dockerBridgeCidr: ''
 		networkPlugin: 'azure' 
 		resourceName: 'aks-dns-t'
