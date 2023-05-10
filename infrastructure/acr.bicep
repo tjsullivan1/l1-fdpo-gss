@@ -94,17 +94,14 @@ module aksVnet 'br:tjsfdpo01.azurecr.io/bicep/modules/vnet:0.0.2' = {
 }
 
 
-module aks 'br:tjsfdpo01.azurecr.io/bicep/modules/aks:0.0.4' = {
+module aks 'br:tjsfdpo01.azurecr.io/bicep/modules/aks:0.0.6' = {
 	scope: aksRG
 	name: 'aks-sample' 
 	params: {
 		acrName: acr.name
 		dnsPrefix: 'aks-dns-t'
-		dnsServiceIP: '172.0.0.0/26'
-		dockerBridgeCidr: ''
 		networkPlugin: 'azure' 
 		resourceName: 'aks-dns-t'
-		serviceCidr: '172.0.0.0/24'
 		vnetSubnetID: aksVnet.outputs.subnets[0].subnet_id
 	}
 }
