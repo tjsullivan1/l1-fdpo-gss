@@ -84,7 +84,7 @@ module aksVnet 'br:tjsfdpo01.azurecr.io/bicep/modules/vnet:0.0.2' = {
 		  {
 				name: 'snet-aks'
 				nsg_id: ''
-				subnetPrefix: '10.1.0.0/24'
+				subnetPrefix: '10.1.0.0/22'
 				PEpol: 'Enabled'
 				PLSpol: 'Enabled'
 				natgw_id: ''
