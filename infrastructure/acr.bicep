@@ -54,6 +54,7 @@ module aca1 'br:tjsfdpo01.azurecr.io/bicep/modules/containerapp:0.0.1' = {
 	params: {
 		 containerAppEnvName: 'came-fdpo-01'
 		 containerAppName: 'ca-fdpo-01'
+		 containerImage: 'tjsfdpo01.azurecr.io/tjs-hello:latest'
 	}
 }
 
@@ -93,7 +94,7 @@ module aksVnet 'br:tjsfdpo01.azurecr.io/bicep/modules/vnet:0.0.2' = {
 	}
 }
 
-
+/*
 module aks 'br:tjsfdpo01.azurecr.io/bicep/modules/aks:0.0.6' = {
 	scope: aksRG
 	name: 'aks-sample' 
@@ -105,3 +106,4 @@ module aks 'br:tjsfdpo01.azurecr.io/bicep/modules/aks:0.0.6' = {
 		vnetSubnetID: aksVnet.outputs.subnets[0].subnet_id
 	}
 }
+*/
